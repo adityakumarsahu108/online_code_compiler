@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { compileCpp, compileJava, compileC, compilePy } = require("./CompilerFunctions"); // Import compilation functions
+const { compileCpp, compileJava, compileC, compileJS } = require("./CompilerFunctions"); // Import compilation functions
 const app = express();
 const PORT = 8000;
 
@@ -26,8 +26,8 @@ app.post("/compile", async (req, res) => {
             case 'c':
                 compileResult = compileC(code, input);
                 break;
-            case 'python':
-                compileResult = compilePy(code, input);
+            case 'javascript':
+                compileResult = compileJS(code, input); // Add this case for JavaScript
                 break;
             default:
                 compileResult = { error: 'Unsupported language' };

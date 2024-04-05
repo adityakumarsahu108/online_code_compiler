@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monaco Editor with File Upload</title>
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.22.3/min/vs/loader.js"></script>
+  <style>
+    #editor {
+      height: 90vh;
+    }
+  </style>
+</head>
+<body>
+  <input type="file" id="fileInput" accept=".txt,.js,.html" />
+  <div id="editor"></div>
+  <script>
+    require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.22.3/min/vs' }});
+    require(['vs/editor/editor.main'], function() {
+      const editor = monaco.editor.create(document.getElementById('editor'), {
+        value: '',
+        language: 'javascript'
+      });
+
+      document.getElementById('fileInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const contents = e.target.result;
+          editor.setValue(contents);
+        };
+        reader.readAsText(file);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,6 +1,5 @@
 const { spawnSync } = require('child_process');
 const fs = require('fs');
-const path = require('path');
 
 function compileCpp(code, input) {
   try {
@@ -8,7 +7,6 @@ function compileCpp(code, input) {
     console.log('Code:', code);
     console.log('Input:', input);
 
-    // Compile the C++ code
     const compileResult = spawnSync(
       'g++',
       ['-x', 'c++', '-o', 'myprogram', '-'],
@@ -35,14 +33,6 @@ function compileCpp(code, input) {
     }
 
     console.log('Program executed successfully');
-
-    fs.unlink(filePath, err => {
-      if (err) {
-        console.error('error deleting file ', err);
-      } else {
-        console.log('file deleted!');
-      }
-    });
 
     return { programOutput: executionResult.stdout };
   } catch (error) {
@@ -79,17 +69,6 @@ function compileJava(code, input) {
 
     console.log('Program executed successfully');
 
-    const directory = './';
-    const files = fs.readdirSync(directory);
-
-    files.forEach(file => {
-      const filePath = path.join(directory, file);
-      if (file.endsWith('.java') || file.endsWith('.class')) {
-        fs.unlinkSync(filePath);
-        console.log(`Deleted: ${filePath}`);
-      }
-    });
-
     return { programOutput: executionResult.stdout };
   } catch (error) {
     console.error('Error:', error);
@@ -97,24 +76,20 @@ function compileJava(code, input) {
   }
 }
 
-function compilePy(code, input) {
+function compileJS(code, input) {
   try {
-    console.log('Executing Python code...');
+    console.log('Executing JavaScript code...');
     console.log('Code:', code);
     console.log('Input:', input);
 
-    let command, args;
-    command = 'python3';
-    args = ['-c', [code]];
-    const pyResult = spawnSync(command, args, {
+    const jsResult = spawnSync('node', ['-e', code], {
       input: input,
       encoding: 'utf-8',
     });
 
-    console.log("Compilation result:", pyResult);
-    console.log('Python code executed successfully');
+    console.log('JavaScript code executed successfully');
 
-    return { programOutput: pyResult.stdout };
+    return { programOutput: jsResult.stdout };
   } catch (error) {
     console.error('Error:', error);
     return { error: error.message };
@@ -152,16 +127,7 @@ function compileC(code, input) {
       throw new Error('Execution error');
     }
 
-    console.log("Compilation result:",executionResult.stdout);
     console.log('Program executed successfully');
-
-    fs.unlink(filePath, err => {
-      if (err) {
-        console.error('error deleting file ', err);
-      } else {
-        console.log('file deleted!');
-      }
-    });
 
     return { programOutput: executionResult.stdout };
   } catch (error) {
@@ -170,4 +136,4 @@ function compileC(code, input) {
   }
 }
 
-module.exports = { compileCpp, compileJava, compileC, compilePy };
+module.exports = { compileCpp, compileJava, compileC, compileJS };

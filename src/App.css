@@ -49,10 +49,11 @@
 
 .output-box { 
 	flex: 50%; 
-	background-color: #ffffff; 
+	background-color: #242424; 
 	overflow-y: auto; 
-	color: rgb(0, 0, 0); 
+	color: rgb(255, 254, 254); 
 	position: relative; 
+	padding: 5px; 
 } 
 
 .clear-btn { 
@@ -112,3 +113,42 @@ h4 {
 .run-btn:active { 
 	background-color: #6e9427; 
 }
+.toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin-bottom: 20px;
+  }
+  .toolbar button {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #1f65e6;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+  }
+  .toolbar button:hover {
+	background-color: #1554af;
+  }
+  .fileButton {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #1f65e6;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	transition: background-color 0.3s;
+  }
+  
+  .fileButton:hover {
+	background-color: #1554af;
+  }
+  
+  .toolbar input[type="file"] {
+	display: none;
+  }
+  

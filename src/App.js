@@ -1,33 +1,17 @@
 import { useState } from 'react';
 import './App.css';
 import Editor from "@monaco-editor/react";
-import Navbar from './components/Navbar';
 import Axios from 'axios';
-
+import Navbar from './components/Navbar';
 
 function App() {
-
-  // State variable to set users source code 
-  const [userCode, setUserCode] = useState(``);
-
-  // State variable to set editors default language 
-  const [userLang, setUserLang] = useState("python");
-
-  // State variable to set editors default theme 
+  // State variables
+  const [userCode, setUserCode] = useState('');
+  const [userLang, setUserLang] = useState("cpp");
   const [userTheme, setUserTheme] = useState("vs-dark");
-
-  // State variable to set editors default font size 
   const [fontSize, setFontSize] = useState(20);
-
-  // State variable to set users input 
-  const [userInput, setUserInput] = useState("");
-
-  // State variable to set users output 
-  const [userOutput, setUserOutput] = useState("");
-
-  const options = {
-    fontSize: fontSize
-  }
+  const [userInput, setUserInput] = useState('');
+  const [userOutput, setUserOutput] = useState('');
 
   // Function to call the compile endpoint 
   const compile = () => {
@@ -36,60 +20,103 @@ function App() {
       language: userLang,
       input: userInput
     })
-    .then((res) => {
-      console.log('Compilation response:', res.data); // Log the response data
-      setUserOutput(res.data.programOutput || 'No output');
-    })
-    .catch((error) => {
-      setUserOutput('Error during compilation');
-      console.error('Error during compilation:', error);
-    });
+      .then((res) => {
+        console.log('Compilation response:', res.data); // Log the response data
+        setUserOutput(res.data.programOutput || 'No output');
+      })
+      .catch((error) => {
+        setUserOutput('Error during compilation');
+        console.error('Error during compilation:', error);
+      });
   };
+
   // Function to clear the output screen 
-  function clearOutput() {
-    setUserOutput("");
-  }
+  const clearOutput = () => {
+    setUserOutput('');
+  };
+
+  const handleUpload = (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+      console.error("No file selected");
+      return;
+    }
+
+    if (file.type !== "text/plain") {
+      console.error("Please upload a text file (.txt)");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const content = e.target.result;
+
+      setUserCode(content);
+    };
+    reader.readAsText(file);
+  };
+
+
+  // Function to handle file download
+  const handleDownload = () => {
+    const element = document.createElement('a');
+    const file = new Blob([userCode], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = `code.txt`; // Download with the selected language extension
+    document.body.appendChild(element); // Required for this to work in Firefox
+    element.click();
+  };
 
   return (
     <div className="App">
       <Navbar
-        userLang={userLang} setUserLang={setUserLang}
-        userTheme={userTheme} setUserTheme={setUserTheme}
-        fontSize={fontSize} setFontSize={setFontSize}
+        userLang={userLang}
+        setUserLang={setUserLang}
+        userTheme={userTheme}
+        setUserTheme={setUserTheme}
+        fontSize={fontSize}
+        setFontSize={setFontSize}
+
       />
+
       <div className="main">
         <div className="left-container">
           <Editor
-            options={options}
+            options={{
+              fontSize: fontSize
+            }}
             height="calc(100vh - 30px)"
             width="100%"
             theme={userTheme}
             language={userLang}
-            defaultLanguage="python"
-            defaultValue="# Enter your code here"
-            onChange={(value) => { setUserCode(value) }}
+            defaultLanguage="cpp"
+            defaultValue="// Enter your code here"
+            value={userCode}
+            onChange={(value) => setUserCode(value)}
           />
-          <button className="run-btn" onClick={() => compile()}>
+          <button className="run-btn" onClick={compile}>
             Run
           </button>
         </div>
+
         <div className="right-container">
+          <div className="toolbar">
+            <label htmlFor="fileInput" className="fileButton" onChange={handleUpload}>Upload a .txt file</label>
+            <input id="fileInput" type="file" onChange={handleUpload} />
+            <button onClick={handleDownload}>Download</button>
+          </div>
           <h4>Input:</h4>
           <div className="input-box">
-            <textarea id="code-inp" onChange=
-              {(e) => setUserInput(e.target.value)}>
-            </textarea>
+            <textarea id="code-inp" onChange={(e) => setUserInput(e.target.value)}></textarea>
           </div>
-          <h4>Output:</h4>
 
+          <h4>Output:</h4>
           <div className="output-box">
             <pre>{userOutput}</pre>
-            <button onClick={() => { clearOutput() }}
-              className="clear-btn">
+            <button onClick={clearOutput} className="clear-btn">
               Clear
             </button>
           </div>
-
         </div>
       </div>
     </div>
