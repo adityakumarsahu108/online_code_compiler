@@ -41,40 +41,42 @@ function compileCpp(code, input) {
   }
 }
 
-function compileJava(code, input) {
-  try {
-    console.log('Compiling Java code...');
-    console.log('Code:', code);
-    console.log('Input:', input);
+// function compileDart(code, input) {
+//   try {
+//       console.log('Compiling and executing Dart code...');
+//       console.log('Code:', code);
+//       console.log('Input:', input);
 
-    fs.writeFileSync('Main.java', code);
-    const compileResult = spawnSync('javac', ['Main.java'], {
-      encoding: 'utf-8',
-    });
+//       // Write the Dart code to a temporary file
+//       fs.writeFileSync('script.dart', code);
 
-    if (compileResult.status !== 0) {
-      throw new Error('Compilation error');
-    }
+//       // Compile the Dart code
+//       const compileResult = spawnSync('dart', ['compile', 'exe', 'script.dart']);
 
-    console.log('Java code compiled successfully');
+//       // Check if compilation was successful
+//       if (compileResult.status !== 0) {
+//           throw new Error('Compilation error');
+//       }
 
-    const executionResult = spawnSync('java', ['Main'], {
-      input: input,
-      encoding: 'utf-8',
-    });
+//       // Execute the compiled Dart program with input
+//       const executionResult = spawnSync('./script.exe', {
+//           input: input,
+//           encoding: 'utf-8',
+//       });
 
-    if (executionResult.error) {
-      throw new Error('Execution error');
-    }
+//       // Check if execution was successful
+//       if (executionResult.error) {
+//           throw new Error('Execution error');
+//       }
 
-    console.log('Program executed successfully');
+//       console.log('Dart code executed successfully');
 
-    return { programOutput: executionResult.stdout };
-  } catch (error) {
-    console.error('Error:', error);
-    return { error: error.message };
-  }
-}
+//       return { programOutput: executionResult.stdout };
+//   } catch (error) {
+//       console.error('Error:', error);
+//       return { error: error.message };
+//   }
+// }
 
 function compileJS(code, input) {
   try {
@@ -136,4 +138,4 @@ function compileC(code, input) {
   }
 }
 
-module.exports = { compileCpp, compileJava, compileC, compileJS };
+module.exports = { compileCpp, compileDart, compileC, compileJS };

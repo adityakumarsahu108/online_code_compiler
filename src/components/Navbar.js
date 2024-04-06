@@ -8,7 +8,7 @@ const Navbar = ({ userLang, setUserLang, userTheme,
     { value: "c", label: "C" },
     { value: "cpp", label: "C++" },
     { value: "javascript", label: "JavaScript" },
-    { value: "java", label: "Java" },
+    // { value: "dart", label: "Dart" },
   ];
   const themes = [
     { value: "vs-dark", label: "Dark" },

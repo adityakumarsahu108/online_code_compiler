@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { compileCpp, compileJava, compileC, compileJS } = require("./CompilerFunctions"); // Import compilation functions
+const { compileCpp,  compileC, compileJS } = require("./CompilerFunctions"); // Import compilation functions
 const app = express();
 const PORT = 8000;
 
@@ -20,9 +20,9 @@ app.post("/compile", async (req, res) => {
             case 'cpp':
                 compileResult = compileCpp(code, input);
                 break;
-            case 'java':
-                compileResult = compileJava(code, input);
-                break;
+            // case 'dart': // Add case for Dart
+            //     compileResult = compileDart(code, input);
+            //     break;
             case 'c':
                 compileResult = compileC(code, input);
                 break;

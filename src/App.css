@@ -118,6 +118,7 @@ h4 {
 	align-items: center;
 	justify-content: space-evenly;
 	margin-bottom: 20px;
+	padding-top: 20px;
   }
   .toolbar button {
 	padding: 10px 20px;
