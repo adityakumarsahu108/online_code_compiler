@@ -5,6 +5,24 @@ import Axios from "axios";
 import Navbar from "./components/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload, faDownload } from "@fortawesome/free-solid-svg-icons";
+import firebase from "firebase/compat/app"; // Import the compat version for backward compatibility
+import "firebase/compat/storage"; // Import the compat version for backward compatibility
+
+
+
+
+
+// Initialize Firebase with your Firebase project configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDOj0X7Pt4XJBU2J1ePQfg6UMajsRJl-6E",
+  authDomain: "onlinecodecompiler-2217e.firebaseapp.com",
+  projectId: "onlinecodecompiler-2217e",
+  storageBucket: "onlinecodecompiler-2217e.appspot.com",
+  messagingSenderId: "284387850271",
+  appId: "1:284387850271:web:0bfa5b134247276a7b7d2a"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 function App() {
   // State variables
@@ -60,13 +78,20 @@ function App() {
 
   // Function to handle file download
   const handleDownload = () => {
-    const element = document.createElement("a");
+    const storageRef = firebase.storage().ref();
+    const timestamp = new Date().getTime(); // Get current timestamp
+    const fileRef = storageRef.child(`code_${timestamp}.txt`); // Dynamically generate filename
+  
     const file = new Blob([userCode], { type: "text/plain" });
-    element.href = URL.createObjectURL(file);
-    element.download = `code.txt`; // Download with the selected language extension
-    document.body.appendChild(element); // Required for this to work in Firefox
-    element.click();
+  
+    fileRef.put(file).then(() => {
+      console.log("File uploaded successfully");
+    }).catch((error) => {
+      console.error("Error uploading file:", error);
+    });
   };
+  
+
 
   return (
     <div className="App">
