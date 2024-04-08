@@ -1,66 +1,79 @@
 .navbar {
-	display: flex;
-	align-items: center;
-	padding: 0 20px;
-	height: 60px;
-	color: #fff;
-	background: linear-gradient(135deg, #2980b9, #2c3e50);
-	border-bottom: 2px solid #34495e;
-	font-family:  sans-serif;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	transition: all 0.3s ease;
-	
-	
-  }
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+    color: #fff;
+    background: linear-gradient(135deg, #2980b9, #2c3e50);
+    border-bottom: 2px solid #34495e;
+    font-family: sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: gradientAnimation 1s infinite linear; /* Change gradient every 10 seconds with linear transition */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.title {
+    margin: 0;
+    font-size: 1.8rem;
+    flex: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-family: sans-serif;
+    outline: #0b6daf;
+}
+
+.dropdowns {
+    display: flex;
+    gap: 10px;
+    font-family: sans-serif;
+    font-weight: 400;
+}
+
+.select {
+    width: 120px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    justify-content: space-between;
+    padding-right: 10px;
+    color: black;
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+.font-size-container {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 50px;
+}
+
+.font_size {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    font-family: sans-serif;
+}
   
-  .title {
-	margin: 0;
-	font-size: 1.8rem;
-	flex: 1;
-	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-	font-family:  sans-serif;
-	outline: #0b6daf;
-  }
-  
-  .dropdowns {
-	display: flex;
-	gap: 10px;
-	font-family:  sans-serif;
-	font-weight: 400;
-  }
-  
-  .select {
-	width: 120px;
-	border-radius: 5px;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	justify-content: space-between;
-	padding-right: 10px;
-	color: black;
-	font-family:  sans-serif;
-	font-weight: 500;
-  }
-  
-  .font-size-container {
-	display: flex;
-	align-items: center;
-	padding-left: 30px;
-	padding-right: 50px;
-  }
-  
-  .font_size {
-	font-weight: 600;
-	font-size: 1.1rem;
-	margin-right: 10px;
-	transition: all 0.3s ease;
-	font-family:  sans-serif;
-  }
-  
-  
-  
-  
-  .navbar:hover {
+.navbar:hover {
 	background: linear-gradient(135deg, #2c3e50, #2980b9);
   }
-  
