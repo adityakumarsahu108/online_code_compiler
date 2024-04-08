@@ -8,10 +8,6 @@ import { faUpload, faDownload } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase/compat/app"; // Import the compat version for backward compatibility
 import "firebase/compat/storage"; // Import the compat version for backward compatibility
 
-
-
-
-
 // Initialize Firebase with your Firebase project configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDOj0X7Pt4XJBU2J1ePQfg6UMajsRJl-6E",
@@ -84,12 +80,24 @@ function App() {
   
     const file = new Blob([userCode], { type: "text/plain" });
   
+    // Upload the file to Firebase Storage
     fileRef.put(file).then(() => {
       console.log("File uploaded successfully");
+  
+      // download to local storage
+      
+        const element = document.createElement('a');
+        element.href = URL.createObjectURL(file);
+        element.download = 'code.txt';
+        document.body.appendChild(element);
+        element.click();
+        
+      
     }).catch((error) => {
       console.error("Error uploading file:", error);
     });
   };
+  
   
 
 
