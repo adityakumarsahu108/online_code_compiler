@@ -104,7 +104,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <>
       <Navbar
         userLang={userLang}
         setUserLang={setUserLang}
@@ -113,6 +113,7 @@ function App() {
         fontSize={fontSize}
         setFontSize={setFontSize}
       />
+    <div className="App">
 
       <div className="main">
         <div className="left-container">
@@ -175,6 +176,7 @@ function App() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
