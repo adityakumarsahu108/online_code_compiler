@@ -28,9 +28,11 @@ function App() {
   const [fontSize, setFontSize] = useState(20);
   const [userInput, setUserInput] = useState("");
   const [userOutput, setUserOutput] = useState("");
+  const [compiling, setCompiling] = useState(false);
 
   // Function to call the compile endpoint
   const compile = () => {
+    setCompiling(true); // Start compilation, set compiling to true
     Axios.post(`http://localhost:8000/compile`, {
       code: userCode,
       language: userLang,
@@ -43,6 +45,9 @@ function App() {
       .catch((error) => {
         setUserOutput("Error during compilation");
         console.error("Error during compilation:", error);
+      })
+      .finally(() => {
+        setCompiling(false); // Compilation finished, set compiling to false
       });
   };
 
@@ -97,9 +102,6 @@ function App() {
       console.error("Error uploading file:", error);
     });
   };
-  
-  
-
 
   return (
     <div className="App">
@@ -127,8 +129,8 @@ function App() {
             value={userCode}
             onChange={(value) => setUserCode(value)}
           />
-          <button className="run-btn" onClick={compile}>
-            Run
+          <button className="run-btn" onClick={compile} disabled={compiling}>
+            {compiling ? "Compiling..." : "Run"} {/* Change button text based on compilation status */}
           </button>
         </div>
 
@@ -156,7 +158,16 @@ function App() {
 
           <h4>Output:</h4>
           <div className="output-box">
-            <pre>{userOutput}</pre>
+            {/* Display loader animation while compiling */}
+            {compiling && (
+              <div className="loader">
+                <div className="box"></div>
+                <div className="box"></div>
+                <div className="box"></div>
+                <div className="box"></div>
+              </div>
+            )}
+            {!compiling && <pre>{userOutput}</pre>}
             <button onClick={clearOutput} className="clear-btn">
               Clear
             </button>
