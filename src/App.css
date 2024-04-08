@@ -78,7 +78,7 @@
 } 
 
 h4 { 
-	color: #afec3f; 
+	color: white; 
 } 
 
 #code-inp { 
@@ -103,15 +103,21 @@ h4 {
 	height: 40px; 
 	font-size: 22px; 
 	font-weight: bold; 
-	background-color: #afec3f; 
+	background-color: #1f65e6; 
 	border: none; 
 	border-radius: 4px; 
 	transition: 0.3s; 
 	cursor: pointer; 
+	color: white; 
 } 
+.clear-btn:hover,
+.run-btn:hover {
+    background-color: #064399; /* Change to the hover color you prefer */
+}
+
 
 .run-btn:active { 
-	background-color: #6e9427; 
+	background-color: #1258c8; 
 }
 .toolbar {
 	display: flex;
@@ -119,6 +125,7 @@ h4 {
 	justify-content: space-evenly;
 	margin-bottom: 20px;
 	padding-top: 20px;
+	font-family: sans-serif;
   }
   .toolbar button {
 	padding: 10px 20px;
@@ -129,6 +136,7 @@ h4 {
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
+	font-family: sans-serif;
   }
   .toolbar button:hover {
 	background-color: #1554af;
@@ -143,6 +151,7 @@ h4 {
 	cursor: pointer;
 	margin-right: 10px;
 	transition: background-color 0.3s;
+	font-family: sans-serif;
   }
   
   .fileButton:hover {
