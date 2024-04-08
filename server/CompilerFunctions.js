@@ -138,4 +138,4 @@ function compileC(code, input) {
   }
 }
 
-module.exports = { compileCpp, compileDart, compileC, compileJS };
+module.exports = { compileCpp, compileC, compileJS };
