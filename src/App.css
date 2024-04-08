@@ -23,7 +23,7 @@
 	height: calc(100vh - 50px); 
 	display: flex; 
 	flex-direction: column; 
-	background-color: #242424; 
+	background-color: #313131; 
 	border-left: 3px solid #1f65e6; 
 	padding: 5px; 
 } 
@@ -72,6 +72,7 @@
 	border-radius: 4px; 
 	transition: 0.3s; 
 	cursor: pointer; 
+	margin-bottom: 10px;
 } 
 
 .output-box pre { 
@@ -81,6 +82,8 @@
 
 h4 { 
 	color: white; 
+	font-weight: 700;
+	font-size: large;
 } 
 
 #code-inp { 
@@ -111,6 +114,8 @@ h4 {
 	transition: 0.3s; 
 	cursor: pointer; 
 	color: white; 
+	font-family:  sans-serif;
+	margin-bottom: 10px;
 } 
 .clear-btn:hover,
 .run-btn:hover {
@@ -139,6 +144,7 @@ h4 {
 	cursor: pointer;
 	transition: background-color 0.3s;
 	font-family: sans-serif;
+	font-weight: bold;
   }
   .toolbar button:hover {
 	background-color: #1554af;
@@ -154,6 +160,7 @@ h4 {
 	margin-right: 10px;
 	transition: background-color 0.3s;
 	font-family: sans-serif;
+	font-weight: bold;
   }
   
   .fileButton:hover {

@@ -25,7 +25,7 @@ function App() {
   const [userCode, setUserCode] = useState("");
   const [userLang, setUserLang] = useState("cpp");
   const [userTheme, setUserTheme] = useState("vs-dark");
-  const [fontSize, setFontSize] = useState(20);
+  const [fontSize, setFontSize] = useState(19);
   const [userInput, setUserInput] = useState("");
   const [userOutput, setUserOutput] = useState("");
   const [compiling, setCompiling] = useState(false);
@@ -131,7 +131,7 @@ function App() {
             onChange={(value) => setUserCode(value)}
           />
           <button className="run-btn" onClick={compile} disabled={compiling}>
-            {compiling ? "Compiling..." : "Run"} {/* Change button text based on compilation status */}
+           Run
           </button>
         </div>
 
