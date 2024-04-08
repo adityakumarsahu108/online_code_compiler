@@ -1,38 +1,40 @@
-import { useState } from 'react';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 import Editor from "@monaco-editor/react";
-import Axios from 'axios';
-import Navbar from './components/Navbar';
+import Axios from "axios";
+import Navbar from "./components/Navbar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload, faDownload } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   // State variables
-  const [userCode, setUserCode] = useState('');
+  const [userCode, setUserCode] = useState("");
   const [userLang, setUserLang] = useState("cpp");
   const [userTheme, setUserTheme] = useState("vs-dark");
   const [fontSize, setFontSize] = useState(20);
-  const [userInput, setUserInput] = useState('');
-  const [userOutput, setUserOutput] = useState('');
+  const [userInput, setUserInput] = useState("");
+  const [userOutput, setUserOutput] = useState("");
 
-  // Function to call the compile endpoint 
+  // Function to call the compile endpoint
   const compile = () => {
     Axios.post(`http://localhost:8000/compile`, {
       code: userCode,
       language: userLang,
-      input: userInput
+      input: userInput,
     })
       .then((res) => {
-        console.log('Compilation response:', res.data); // Log the response data
-        setUserOutput(res.data.programOutput || 'No output');
+        console.log("Compilation response:", res.data); // Log the response data
+        setUserOutput(res.data.programOutput || "No output");
       })
       .catch((error) => {
-        setUserOutput('Error during compilation');
-        console.error('Error during compilation:', error);
+        setUserOutput("Error during compilation");
+        console.error("Error during compilation:", error);
       });
   };
 
-  // Function to clear the output screen 
+  // Function to clear the output screen
   const clearOutput = () => {
-    setUserOutput('');
+    setUserOutput("");
   };
 
   const handleUpload = (event) => {
@@ -56,11 +58,10 @@ function App() {
     reader.readAsText(file);
   };
 
-
   // Function to handle file download
   const handleDownload = () => {
-    const element = document.createElement('a');
-    const file = new Blob([userCode], { type: 'text/plain' });
+    const element = document.createElement("a");
+    const file = new Blob([userCode], { type: "text/plain" });
     element.href = URL.createObjectURL(file);
     element.download = `code.txt`; // Download with the selected language extension
     document.body.appendChild(element); // Required for this to work in Firefox
@@ -76,14 +77,13 @@ function App() {
         setUserTheme={setUserTheme}
         fontSize={fontSize}
         setFontSize={setFontSize}
-
       />
 
       <div className="main">
         <div className="left-container">
           <Editor
             options={{
-              fontSize: fontSize
+              fontSize: fontSize,
             }}
             height="calc(100vh - 30px)"
             width="100%"
@@ -101,13 +101,24 @@ function App() {
 
         <div className="right-container">
           <div className="toolbar">
-            <label htmlFor="fileInput" className="fileButton" onChange={handleUpload}>Upload a .txt file</label>
+            <label
+              htmlFor="fileInput"
+              className="fileButton"
+              onChange={handleUpload}
+            >
+              <FontAwesomeIcon icon={faUpload} /> Upload a .txt file
+            </label>
             <input id="fileInput" type="file" onChange={handleUpload} />
-            <button onClick={handleDownload}>Download</button>
+            <button onClick={handleDownload}>
+              <FontAwesomeIcon icon={faDownload} /> Download
+            </button>
           </div>
           <h4>Input:</h4>
           <div className="input-box">
-            <textarea id="code-inp" onChange={(e) => setUserInput(e.target.value)}></textarea>
+            <textarea
+              id="code-inp"
+              onChange={(e) => setUserInput(e.target.value)}
+            ></textarea>
           </div>
 
           <h4>Output:</h4>
