@@ -20,9 +20,7 @@ app.post("/compile", async (req, res) => {
             case 'cpp':
                 compileResult = compileCpp(code, input);
                 break;
-            // case 'dart': // Add case for Dart
-            //     compileResult = compileDart(code, input);
-            //     break;
+            
             case 'c':
                 compileResult = compileC(code, input);
                 break;
