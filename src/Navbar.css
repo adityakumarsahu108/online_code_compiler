@@ -4,8 +4,8 @@
     padding: 0 20px;
     height: 60px;
     color: #fff;
-    background: linear-gradient(135deg, #2980b9, #2c3e50);
-    border-bottom: 2px solid #34495e;
+    background: linear-gradient(135deg, #717171, #2c3e50);
+   
     font-family: sans-serif;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation: gradientAnimation 1s infinite linear; /* Change gradient every 10 seconds with linear transition */
@@ -36,7 +36,7 @@
     flex: 1;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     font-family: sans-serif;
-    outline: #0b6daf;
+   
 }
 
 .dropdowns {
@@ -54,7 +54,7 @@
     cursor: pointer;
     justify-content: space-between;
     padding-right: 10px;
-    color: black;
+    color: rgba(0, 0, 0, 0.786);
     font-family: sans-serif;
     font-weight: 500;
 }
@@ -75,5 +75,6 @@
 }
   
 .navbar:hover {
-	background: linear-gradient(135deg, #2c3e50, #2980b9);
+	background: linear-gradient(135deg, #6c6c6c, rgb(45, 62, 80));
+
   }
