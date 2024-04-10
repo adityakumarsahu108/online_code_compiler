@@ -2,13 +2,15 @@
 const express = require('express');
 const cors = require('cors');
 const { spawnSync } = require('child_process');
-const PORT = 10000;
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+app.get('/', (req, res) => {
+  res.send('Welcome to the online code compiler API!');
+});
 function compileCpp(code, input) {
   try {
     console.log('Compiling C++ code...');
