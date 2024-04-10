@@ -25,7 +25,7 @@ function App() {
   const [userCode, setUserCode] = useState("");
   const [userLang, setUserLang] = useState("cpp");
   const [userTheme, setUserTheme] = useState("vs-dark");
-  const [fontSize, setFontSize] = useState(19);
+  const [fontSize, setFontSize] = useState(15);
   const [userInput, setUserInput] = useState("");
   const [userOutput, setUserOutput] = useState("");
   const [compiling, setCompiling] = useState(false);
@@ -117,19 +117,21 @@ function App() {
 
       <div className="main">
         <div className="left-container">
-          <Editor
-            options={{
+          <div className="editor-container">
+            <Editor
+              options={{
               fontSize: fontSize,
-            }}
-            height="calc(100vh - 30px)"
-            width="100%"
-            theme={userTheme}
-            language={userLang}
-            defaultLanguage="cpp"
-            defaultValue="// Enter your code here"
-            value={userCode}
-            onChange={(value) => setUserCode(value)}
+              }}
+              height="calc(90vh - 30px)" // Adjusted height
+              width="90%" // Adjusted width
+              theme={userTheme}
+              language={userLang}
+              defaultLanguage="cpp"
+              defaultValue="// Enter your code here"
+              value={userCode}
+              onChange={(value) => setUserCode(value)}
           />
+        </div>
           <button className="run-btn" onClick={compile} disabled={compiling}>
            Run
           </button>

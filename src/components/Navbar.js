@@ -14,24 +14,51 @@ const Navbar = ({ userLang, setUserLang, userTheme,
     { value: "vs-dark", label: "Dark" },
     { value: "light", label: "Light" },
   ];
-
-
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      width: 120,
+      borderRadius: 5,
+      border: '2px solid cyan', // Add white border
+      outline: 'none',
+      cursor: 'pointer',
+      justifyContent: 'space-between',
+      paddingRight: 10,
+      color: 'cyan',
+      fontFamily: 'sans-serif',
+      backgroundColor: '#1E1E1E',
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused ? '#555555' : '#1E1E1E', // Change background color when hovered
+      color: 'white',
+    }),
+    menu: (provided, state) => ({
+      ...provided,
+      marginTop: 0, // Remove top margin
+      marginBottom: 0, // Remove bottom margin
+      borderRadius: 0, // Remove border radius
+      backgroundColor: '#1E1E1E',
+      border: 'none', // Remove border
+      boxShadow: 'none', // Remove box shadow
+    }),
+  };
   
 
 
   return (
     <div className="navbar">
-    <h1 className="title">Fullstack AAT Online Code Compiler</h1>
+    <h1 className="title">ONLINE CODE EDITOR</h1>
     <div className="dropdowns">
       <Select
-        className="select"
+        styles={customStyles}
         options={languages}
         value={userLang}
         onChange={(e) => setUserLang(e.value)}
         placeholder={userLang}
       />
       <Select
-        className="select"
+        styles={customStyles}
         options={themes}
         value={userTheme}
         onChange={(e) => setUserTheme(e.value)}
@@ -42,7 +69,7 @@ const Navbar = ({ userLang, setUserLang, userTheme,
       <label className="font_size">Font Size</label>
       <input
         type="range"
-        min="18"
+        min="15"
         max="40"
         value={fontSize}
         step="2"
