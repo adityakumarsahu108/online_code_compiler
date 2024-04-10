@@ -48,7 +48,7 @@ const Navbar = ({ userLang, setUserLang, userTheme,
 
   return (
     <div className="navbar">
-    <h1 className="title">ONLINE CODE COMPILER</h1>
+    <h1 className="title">ONLINE CODE EDITOR</h1>
     <div className="dropdowns">
       <Select
         styles={customStyles}
