@@ -70,9 +70,9 @@ const Navbar = ({ userLang, setUserLang, userTheme,
       <input
         type="range"
         min="15"
-        max="30"
+        max="40"
         value={fontSize}
-        step="2"
+        step="1"
         onChange={(e) => setFontSize(Number(e.target.value))}
       />
     </div>
