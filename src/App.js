@@ -33,7 +33,7 @@ function App() {
   // Function to call the compile endpoint
   const compile = () => {
     setCompiling(true); // Start compilation, set compiling to true
-    Axios.post(`http://localhost:8000/compile`, {
+    Axios.post(`http://localhost:10000/compile`, {
       code: userCode,
       language: userLang,
       input: userInput,
