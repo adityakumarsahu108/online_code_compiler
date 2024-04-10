@@ -21,7 +21,7 @@
 
 .dropdowns {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     font-family: sans-serif;
     font-weight: 400;
 }
@@ -32,8 +32,8 @@
     border: none;
     outline: none;
     cursor: pointer;
-    justify-content: space-between;
-    padding-right: 10px;
+    justify-content: space-evenly;
+    padding-right: 20px;
     color: white; /* Set text color to white */
     font-family: sans-serif;
     background-color: #1E1E1E !important; /* Set background color */
@@ -44,6 +44,7 @@
     align-items: center;
     padding-left: 30px;
     padding-right: 50px;
+    gap: 10px;
 }
 input[type="range"] {
     -webkit-appearance: none;
@@ -68,4 +69,6 @@ input[type="range"]::-webkit-slider-thumb {
     margin-right: 10px;
     transition: all 0.3s ease;
     font-family: sans-serif;
+    margin-left: 10px;
+    
 }
