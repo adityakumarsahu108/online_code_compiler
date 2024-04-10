@@ -5,18 +5,17 @@
     height: 60px;
     color: #fff;
     background: #1E1E1E;
-   
     font-family: sans-serif;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     /* Change gradient every 10 seconds with linear transition */
 }
+
 .title {
     margin: 0;
     font-size: 1.8rem;
     flex: 1;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     font-family: sans-serif;
-   
 }
 
 .dropdowns {
@@ -34,9 +33,9 @@
     cursor: pointer;
     justify-content: space-evenly;
     padding-right: 20px;
-    color: white; /* Set text color to white */
+    color: white;
     font-family: sans-serif;
-    background-color: #1E1E1E !important; /* Set background color */
+    background-color: #1E1E1E !important;
 }
 
 .font-size-container {
@@ -46,11 +45,12 @@
     padding-right: 50px;
     gap: 10px;
 }
+
 input[type="range"] {
     -webkit-appearance: none;
     width: 100%;
     height: 5px;
-    background-color: #ddd; /* Default background color */
+    background-color: #ddd;
     border-radius: 5px;
     outline: none;
 }
@@ -60,9 +60,10 @@ input[type="range"]::-webkit-slider-thumb {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: cyan; /* Change thumb color to cyan */
+    background-color: cyan;
     cursor: pointer;
 }
+
 .font_size {
     font-weight: 600;
     font-size: 1.1rem;
@@ -70,5 +71,34 @@ input[type="range"]::-webkit-slider-thumb {
     transition: all 0.3s ease;
     font-family: sans-serif;
     margin-left: 10px;
-    
+}
+
+/* Responsive Styling */
+@media only screen and (max-width: 768px) {
+    .navbar {
+        padding: 0 10px;
+        height: 50px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .dropdowns {
+        gap: 10px;
+    }
+
+    .select {
+        width: 100px;
+        padding-right: 10px;
+    }
+
+    .font-size-container {
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+
+    .font_size {
+        font-size: 1rem;
+    }
 }
