@@ -1,7 +1,8 @@
-const functions = require('firebase-functions');
+
 const express = require('express');
 const cors = require('cors');
 const { spawnSync } = require('child_process');
+const PORT = 10000;
 
 const app = express();
 
@@ -139,4 +140,6 @@ app.post('/compile', (req, res) => {
     }
 });
 
-exports.app = functions.https.onRequest(app);
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
