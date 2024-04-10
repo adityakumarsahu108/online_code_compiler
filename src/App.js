@@ -33,7 +33,7 @@ function App() {
   // Function to call the compile endpoint
   const compile = () => {
     setCompiling(true); // Start compilation, set compiling to true
-    Axios.post(`http://localhost:10000/compile`, {
+    Axios.post(`https://online-code-compiler-5.onrender.com/compile`, {
       code: userCode,
       language: userLang,
       input: userInput,
