@@ -1,242 +1,257 @@
-.App { 
-	max-height: 92vh; 
-	width: 100%; 
-	overflow-y: hidden; 
-	background: #1e1e1efa;
-} 
+.App {
+    max-height: 92vh;
+    width: 100%;
+    overflow-y: hidden;
+    background: #1e1e1efa;
+	overflow-x: auto;
+}
 
-.main { 
-	display: flex; 
-	height: calc(100vh - 50px); 
-	overflow-y: hidden; 
-} 
+.main {
+    display: flex;
+    height: calc(100vh - 50px);
+    overflow-y: hidden;
+}
 
-.left-container { 
-	position: relative; 
-	flex: 60%; 
-	height: calc(100vh - 50px); 
-} 
+.left-container {
+    position: relative;
+    flex: 60%;
+    height: calc(100vh - 50px);
+}
 
 .editor-container {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: calc(90vh - 30px); /* Adjusted height */
-    width: 87%; /* Adjusted width */
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-	border: 2px solid rgb(110, 109, 109); /* Add border color */
+    justify-content: center;
+    align-items: center;
+    height: calc(90vh - 30px);
+    width: 87%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid rgb(110, 109, 109);
     border-radius: 10px;
-	margin-right:2rem ;
-	margin-left: 0.5rem;
+    margin-right: 2rem;
+    margin-left: 0.5rem;
 }
 
-.right-container { 
-	flex: 40%; 
-	height: calc(100vh - 50px); 
-	display: flex; 
-	flex-direction: column; 
-	background-color: #313131; 
-	border-left: 2px solid rgb(110, 109, 109);
-	padding: 5px; 
-} 
+.right-container {
+    flex: 40%;
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    background-color: #313131;
+    border-left: 2px solid rgb(110, 109, 109);
+    padding: 5px;
+}
 
-.input-box, .output-box { 
-	flex: 50%; 
-} 
+.input-box,
+.output-box {
+    flex: 50%;
+}
 
-.input-box textarea { 
-	font-size: 16px; 
-} 
+.input-box textarea {
+    font-size: 16px;
+}
 
-.output-box { 
-	background-color: #242424; 
-	overflow-y: auto; 
-	color: rgb(255, 254, 254); 
-	position: relative; 
-	padding: 5px; 
-} 
+.output-box {
+    background-color: #242424;
+    overflow-y: auto;
+    color: rgb(255, 254, 254);
+    position: relative;
+    padding: 5px;
+}
 
-.clear-btn { 
-	position: absolute; 
-	bottom: 14px; 
-	right: 18px; 
-	width: 80px; 
-	height: 40px; 
-	font-size: 22px; 
-	font-weight: bold;
-	border: solid 2px cyan;
-	color: white; 
-	background-color: #1E1E1E;
-	border-radius: 4px; 
-	transition: 0.3s; 
-	cursor: pointer; 
-	margin-bottom: 10px;	
-} 
+.clear-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 18px;
+    width: 80px;
+    height: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    border: solid 2px cyan;
+    color: white;
+    background-color: #1E1E1E;
+    border-radius: 4px;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
 
-.output-box pre { 
-	font-size: 15px; 
-	white-space: pre-wrap; 
-} 
+.output-box pre {
+    font-size: 15px;
+    white-space: pre-wrap;
+}
 
-h4 { 
-	color: white; 
-	font-weight: 700;
-	font-size: large;
-} 
+h4 {
+    color: white;
+    font-weight: 700;
+    font-size: large;
+}
 
-#code-inp { 
-	box-sizing: border-box; 
-	width: 100%; 
-	height: 100%; 
-	resize: none; 
-	background-color: #242424; 
-	color: whitesmoke; 
-	padding: 5px; 
-} 
+#code-inp {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    background-color: #242424;
+    color: whitesmoke;
+    padding: 5px;
+}
 
-#code-inp:focus { 
-	outline: none; 
-} 
+#code-inp:focus {
+    outline: none;
+}
 
-.run-btn { 
-	position: absolute; 
-	bottom: 10px; 
-	right: 18px; 
-	width: 80px; 
-	height: 40px; 
-	font-size: 22px; 
-	font-weight: bold; 
-	border: solid 2px cyan;
-	background-color: #1E1E1E;
-	border-radius: 4px; 
-	transition: 0.3s; 
-	cursor: pointer; 
-	color: white; 
-	font-family:  sans-serif;
-	margin-bottom: 10px;
-} 
+.run-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 18px;
+    width: 80px;
+    height: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    border: solid 2px cyan;
+    background-color: #1E1E1E;
+    border-radius: 4px;
+    transition: 0.3s;
+    cursor: pointer;
+    color: white;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
 
 .clear-btn:hover,
 .run-btn:hover {
-    background-color: #363636; /* Change to the hover color you prefer */
+    background-color: #363636;
 }
 
-
-.run-btn:active { 
-	background-color: #1258c8; 
+.run-btn:active {
+    background-color: #1258c8;
 }
+
 .toolbar {
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	margin-bottom: 20px;
-	padding-top: 20px;
-	font-family: sans-serif;
-  }
-  .toolbar button {
-	padding: 10px 20px;
-	font-size: 16px;
-	border: solid 2px cyan;
-	background-color: #1E1E1E;
-	color: white;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color 0.3s;
-	font-family: sans-serif;
-	font-weight: bold;
-  }
-  .toolbar button:hover {
-	background-color: #363636;
-  }
-  .fileButton {
-	padding: 10px 20px;
-	font-size: 16px;
-	border: solid 2px cyan;
-	background-color: #1E1E1E;
-	color: white;
-	border-radius: 5px;
-	cursor: pointer;
-	margin-right: 11px;
-	transition: background-color 0.3s;
-	font-family: sans-serif;
-	font-weight: bold;
-  }
-  
-  .fileButton:hover {
-	background-color:#363636;
-  }
-  
-  .toolbar input[type="file"] {
-	display: none;
-  }
-  .loader {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100px;
-  }
-  
-  .box {
-	width: 20px;
-	height: 20px;
-	margin: 0 8px;
-	border-radius: 50%;
-	animation: jump_4123 1s ease-in-out infinite;
-  }
-  
-  .box:nth-child(1) {
-	background-color: #4e4e4e;
-	animation-delay: 0.2s;
-  }
-  
-  .box:nth-child(2) {
-	background-color: #bdbdbd;
-	animation-delay: 0.4s;
-  }
-  
-  .box:nth-child(3) {
-	background-color: #4e4e4e;
-	animation-delay: 0.6s;
-  }
-  
-  .box:nth-child(4) {
-	background-color: #bdbdbd;
-	animation-delay: 0.8s;
-  }
-  
-  @keyframes jump_4123 {
-	0%, 100% {
-	  transform: translateY(0);
-	}
-  
-	50% {
-	  transform: translateY(-30px);
-	}
-  }
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    font-family: sans-serif;
+}
+
+.toolbar button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: solid 2px cyan;
+    background-color: #1E1E1E;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.toolbar button:hover {
+    background-color: #363636;
+}
+
+.fileButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: solid 2px cyan;
+    background-color: #1E1E1E;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 11px;
+    transition: background-color 0.3s;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.fileButton:hover {
+    background-color: #363636;
+}
+
+.toolbar input[type="file"] {
+    display: none;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}
+
+.box {
+    width: 20px;
+    height: 20px;
+    margin: 0 8px;
+    border-radius: 50%;
+    animation: jump_4123 1s ease-in-out infinite;
+}
+
+.box:nth-child(1) {
+    background-color: #4e4e4e;
+    animation-delay: 0.2s;
+}
+
+.box:nth-child(2) {
+    background-color: #bdbdbd;
+    animation-delay: 0.4s;
+}
+
+.box:nth-child(3) {
+    background-color: #4e4e4e;
+    animation-delay: 0.6s;
+}
+
+.box:nth-child(4) {
+    background-color: #bdbdbd;
+    animation-delay: 0.8s;
+}
+
+@keyframes jump_4123 {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
+}
 
 @media only screen and (max-width: 768px) {
-  .main {
-    flex-direction: column;
-  }
+    .main {
+        flex-direction: column;
+    }
 
-  .left-container, .right-container {
-    flex: auto;
-    width: 100%;
-  }
+    .left-container,
+    .right-container {
+        flex: auto;
+        width: 100%;
+    }
 
-  .editor-container {
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-  }
+    .editor-container {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
 
-  .toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-  .toolbar button, .fileButton {
-    margin-bottom: 10px;
-  }
+    .toolbar button,
+    .fileButton {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .right-container {
+        flex: 100%;
+    }
 }
